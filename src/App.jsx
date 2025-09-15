@@ -1,10 +1,11 @@
-import ListToDo from "./components/ListToDo"
+import AddTask from "./components/AddTask"
 
 function App() {
 
   return (
     <>
-      <ListToDo />
+      <h1>My Todo</h1>
+      <AddTask />
     </>
   )
 }
