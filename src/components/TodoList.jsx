@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
 
-export default function TodoList() {
+export default function TodoList({ tasks }) {
 
   return (
     <div>
       <ul>
-        List
+        {tasks.map((task, index) => <li key={index}>{task}</li>)}
       </ul>
     </div>
-
   )
 }
