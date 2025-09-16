@@ -12,7 +12,7 @@ function App() {
       <h1>My Todo </h1>
       <TodoInput tasks={tasks} setTasks={setTasks} />
       <TodoFilters />
-      <TodoList tasks={tasks} />
+      <TodoList tasks={tasks} setTasks={setTasks} />
       <Footer />
     </>
   )
