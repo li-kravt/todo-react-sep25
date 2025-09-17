@@ -8,13 +8,15 @@ function App() {
   const [tasks, setTasks] = useState([])
 
   return (
-    <>
-      <h1>My Todo </h1>
-      <TodoInput tasks={tasks} setTasks={setTasks} />
+    <div className="flex flex-col h-full bg-gray-50 px-18 py-10">
+      <div className="flex flex-col gap-14">
+        <h1 className="flex justify-center text-4xl text-blue-600">My Todo</h1>
+        <TodoInput tasks={tasks} setTasks={setTasks} />
+      </div>
       <TodoFilters />
       <TodoList tasks={tasks} setTasks={setTasks} />
       <Footer />
-    </>
+    </div>
   )
 }
 
