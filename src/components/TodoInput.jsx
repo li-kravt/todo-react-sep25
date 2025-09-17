@@ -4,6 +4,9 @@ export default function TodoInput({ tasks, setTasks }) {
   const [text, setText] = useState("")
 
   function handleClick() {
+    if (text === "") {
+      return
+    }
     setTasks([...tasks, { text: text, done: false }])
     setText("")
     console.log(tasks)
