@@ -13,13 +13,15 @@ export default function TodoInput({ tasks, setTasks }) {
   }
 
   return (
-    <div className="flex flex-col">
-      <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Add new ..." />
-      <img
-        src=""
-        alt="choose date"
-      />
-      <button onClick={handleClick}>Add</button>
+    <div className="flex flex-row h-16 w-220 p-4 items-center justify-between bg-white rounded-xl">
+      <input className="flex w-180" type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Add new ..." />
+      <div className="flex justify-center items-center gap-4">
+        <img className="w-h h-6 cursor-pointer"
+          src="img/calendar.svg"
+          alt="choose date"
+        />
+        <button className="flex items-center justify-center p-3 bg-blue-600 text-white leading-none rounded-sm cursor-pointer" onClick={handleClick}>Add</button>
+      </div>
     </div>
   )
 }

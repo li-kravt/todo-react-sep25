@@ -3,10 +3,6 @@ import React, { useState } from "react";
 
 export default function TodoList({ tasks, setTasks }) {
 
-  // function handleClick(e) {
-  //   setTasks([...tasks, !tasks.done])
-  // }
-
   return (
     <div>
       <ul>
