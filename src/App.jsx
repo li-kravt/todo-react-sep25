@@ -13,7 +13,7 @@ function App() {
         <h1 className="flex justify-center text-4xl text-blue-600">My Todo</h1>
         <TodoInput tasks={tasks} setTasks={setTasks} />
       </div>
-      <TodoFilters />
+      <TodoFilters tasks={tasks} setTasks={setTasks} />
       <TodoList tasks={tasks} setTasks={setTasks} />
       <Footer />
     </div>
