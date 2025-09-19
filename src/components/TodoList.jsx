@@ -18,7 +18,7 @@ export default function TodoList({ tasks, setTasks }) {
               }}>
             </input>
             <label style={task.done === true ? { textDecoration: "line-through" } : {}}>{task.text}</label>
-            <div><p>date</p></div></li>)}
+            <div><p>{task.date}</p></div></li>)}
       </ul>
     </div>
   )
