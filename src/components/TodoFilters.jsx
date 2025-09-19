@@ -1,23 +1,6 @@
 import React, { useState } from "react";
 
-export default function TodoFilters({ tasks, setTasks }) {
-  const [filter, setFilter] = useState("All")
-
-  // function filterTask(tasks) {
-  //   if (filter == "Deadline") {
-  //     const filterDeadlineTasks = tasks.map((t) => date !== "" && t)
-  //     setTasks(filterDeadlineTasks)
-  //   }
-
-  function filterTasks(e) {
-    const valueFilter = e.target.value
-    setFilter(valueFilter)
-    console.log(filter)
-    if (valueFilter == "Deadline") {
-      const filterDeadlineTasks = tasks.filter((t) => t.date !== "" && t)
-      setTasks(filterDeadlineTasks)
-    }
-  }
+export default function TodoFilters({ filter, setFilter }) {
 
   return (
     <div className="flex justify-end px-80 gap-10 my-4">
@@ -25,7 +8,7 @@ export default function TodoFilters({ tasks, setTasks }) {
         <label className="font-light">Filter: </label>
         <select className="flex items-center justify-center bg-white p-1 rounded-md"
           value={filter}
-          onChange={filterTasks}>
+          onChange={(e) => setFilter(e.target.value)}>
           <option>All</option>
           <option>Deadline</option>
           <option>Completed</option>

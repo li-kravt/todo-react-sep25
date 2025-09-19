@@ -6,6 +6,8 @@ import TodoList from "./components/TodoList"
 
 function App() {
   const [tasks, setTasks] = useState([])
+  const [filter, setFilter] = useState("All")
+
 
   return (
     <div className="flex flex-col h-full bg-gray-50 px-18 py-10">
@@ -13,8 +15,8 @@ function App() {
         <h1 className="flex justify-center text-4xl text-blue-600">My Todo</h1>
         <TodoInput tasks={tasks} setTasks={setTasks} />
       </div>
-      <TodoFilters tasks={tasks} setTasks={setTasks} />
-      <TodoList tasks={tasks} setTasks={setTasks} />
+      <TodoFilters tasks={tasks} setTasks={setTasks} filter={filter} setFilter={setFilter} />
+      <TodoList tasks={tasks} setTasks={setTasks} filter={filter} />
       <Footer />
     </div>
   )

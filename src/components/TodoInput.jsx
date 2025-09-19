@@ -3,14 +3,16 @@ import React, { useState } from "react";
 export default function TodoInput({ tasks, setTasks }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
+  const [nextId, setNextId] = useState(0)
 
   function handleClick() {
     if (text === "") {
       return
     }
-    setTasks([...tasks, { text: text, date: date, done: false }])
+    setTasks([...tasks, { id: nextId, text: text, date: date, done: false }])
     setText("")
     console.log(tasks)
+    setNextId(nextId + 1)
     setDate("")
   }
 
