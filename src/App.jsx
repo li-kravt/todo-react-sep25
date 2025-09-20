@@ -15,7 +15,7 @@ function App() {
         <h1 className="flex justify-center text-4xl text-blue-600">My Todo</h1>
         <TodoInput tasks={tasks} setTasks={setTasks} />
       </div>
-      <TodoFilters tasks={tasks} setTasks={setTasks} filter={filter} setFilter={setFilter} />
+      <TodoFilters filter={filter} setFilter={setFilter} />
       <TodoList tasks={tasks} setTasks={setTasks} filter={filter} />
       <Footer />
     </div>
