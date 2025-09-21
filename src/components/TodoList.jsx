@@ -2,10 +2,9 @@ import React, { useState } from "react";
 
 
 export default function TodoList({ tasks, setTasks, filter }) {
-  const visibleTasks = tasks.filter(t => {
-    if (filter === "All") return t
-    if (filter === "Deadline") return t.date !== ""
-    if (filter === "Completed") return t.done === true
+  const visibleTasks = filter === 'All' ? tasks : tasks.filter(t => {
+    if (filter === "Deadline") return t.date
+    if (filter === "Completed") return t.done
   })
 
 
