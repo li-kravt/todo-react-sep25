@@ -1,24 +1,43 @@
 import React, { useState } from "react";
 
 
-export default function TodoList({ tasks, setTasks, filter }) {
-  const visibleTasks = tasks.filter(t => {
-    if (filter === "All") return t
-    if (filter === "Deadline") return t.date !== ""
-    if (filter === "Completed") return t.done === true
-  })
+export default function TodoList({ tasks, setTasks, filter, sort }) {
 
+
+  function filterSortVisibleTasks() {
+    let visibleTasks = []
+
+    if (filter == "All") {
+      visibleTasks = [...tasks].sort((a, b) => {
+        if (sort == "Added date") {
+          return a.id - b.id
+        }
+        if (sort == "Deadline") {
+          return b.timeStamp - a.timeStamp
+        }
+        return visibleTasks
+      }
+      )
+    }
+    return visibleTasks
+
+
+
+  }
+
+  const items = filterSortVisibleTasks()
 
   return (
     <div>
       <ul>
-        {visibleTasks.map((task, index) =>
+        {console.log("filterSortVisibleTasks:", filterSortVisibleTasks())}
+        {items.map((task) =>
           <li key={task.id}>
             <input type="checkbox"
               checked={task.done}
               onChange={(e) => {
 
-                const updatedTasks = tasks.map((t, i) => i === task.id ? { ...t, done: e.target.checked } : t);
+                const updatedTasks = tasks.map((t) => t.id === task.id ? { ...t, done: e.target.checked } : t);
                 setTasks(updatedTasks)
 
                 console.log("click")

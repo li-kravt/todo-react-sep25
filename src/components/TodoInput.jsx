@@ -3,17 +3,22 @@ import React, { useState } from "react";
 export default function TodoInput({ tasks, setTasks }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
-  const [nextId, setNextId] = useState(0)
+  const [timeStamp, setTimeStamp] = useState(0)
 
   function handleClick() {
     if (text === "") {
       return
     }
-    setTasks([...tasks, { id: nextId, text: text, date: date, done: false }])
+    setTasks([...tasks, { id: Date.now(), text: text, date: date, timeStamp: timeStamp, done: false }])
     setText("")
     console.log(tasks)
-    setNextId(nextId + 1)
     setDate("")
+    setTimeStamp(0)
+  }
+
+  function handleChange(e) {
+    setDate(e.target.value)
+    setTimeStamp(e.target.valueAsNumber)
   }
 
   return (
@@ -24,7 +29,7 @@ export default function TodoInput({ tasks, setTasks }) {
           src="img/calendar.svg"
           alt="choose date"
           value={date}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e) => handleChange(e)}
         />
         {/* добавила календарь в инпуте если что, дальше над ним работаю */}
         <button className="flex items-center justify-center p-3 bg-blue-600 text-white leading-none rounded-sm cursor-pointer"
