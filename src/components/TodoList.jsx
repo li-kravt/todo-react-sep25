@@ -32,9 +32,63 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
       }
       )
     }
+
+    if (filter == "Deadline") {
+      visibleTasks = [...tasks].filter((task) => {
+        return task.date
+      })
+
+      visibleTasks.sort((a, b) => {
+        if (sort == "Added date") {
+          if (reverse) {
+            return b.id - a.id
+          } else {
+            return a.id - b.id
+          }
+        }
+        if (sort == "Deadline") {
+          if (reverse) {
+            return b.timeStamp - a.timeStamp
+          }
+          return a.timeStamp - b.timeStamp
+        }
+        if (sort === "Alphabetically") {
+          if (reverse) {
+            return b.text.localeCompare(a.text)
+          }
+          return a.text.localeCompare(b.text)
+        }
+      })
+    }
+
+    if (filter == "Completed") {
+      visibleTasks = [...tasks].filter((task) => {
+        return task.done
+      })
+      visibleTasks.sort((a, b) => {
+        if (sort == "Added date") {
+          if (reverse) {
+            return b.id - a.id
+          } else {
+            return a.id - b.id
+          }
+        }
+        if (sort == "Deadline") {
+          if (reverse) {
+            return b.timeStamp - a.timeStamp
+          }
+          return a.timeStamp - b.timeStamp
+        }
+        if (sort === "Alphabetically") {
+          if (reverse) {
+            return b.text.localeCompare(a.text)
+          }
+          return a.text.localeCompare(b.text)
+        }
+      })
+    }
+
     return visibleTasks
-
-
   }
 
   const items = filterSortVisibleTasks()
