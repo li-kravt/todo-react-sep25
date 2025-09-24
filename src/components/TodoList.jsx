@@ -15,12 +15,14 @@ export default function TodoList({ tasks, setTasks, filter, sort }) {
         if (sort == "Deadline") {
           return b.timeStamp - a.timeStamp
         }
+        if (sort === "Alphabetically") {
+          return a.text.localeCompare(b.text)
+        }
         return visibleTasks
       }
       )
     }
     return visibleTasks
-
 
 
   }
