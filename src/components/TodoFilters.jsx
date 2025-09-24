@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function TodoFilters({ filter, setFilter, sort, setSort }) {
+export default function TodoFilters({ filter, setFilter, sort, setSort, reverse, setReverse }) {
 
   return (
     <div className="flex justify-end px-80 gap-10 my-4">
@@ -24,7 +24,8 @@ export default function TodoFilters({ filter, setFilter, sort, setSort }) {
           <option>Alphabetically</option>
         </select>
       </div>
-      <img src="/img/sort.svg" alt="reverse" className="cursor-pointer" />
+      <img onClick={() => setReverse(prev => !prev)} src="/img/sort.svg" alt="reverse" className={reverse ? "rotate-180 cursor-pointer" : "cursor-pointer"} />
+      {console.log(reverse)}
     </div>
   )
 }

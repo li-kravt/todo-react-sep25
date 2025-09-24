@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-export default function TodoList({ tasks, setTasks, filter, sort }) {
+export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
 
 
   function filterSortVisibleTasks() {
@@ -10,12 +10,22 @@ export default function TodoList({ tasks, setTasks, filter, sort }) {
     if (filter == "All") {
       visibleTasks = [...tasks].sort((a, b) => {
         if (sort == "Added date") {
-          return a.id - b.id
+          if (reverse) {
+            return b.id - a.id
+          } else {
+            return a.id - b.id
+          }
         }
         if (sort == "Deadline") {
-          return b.timeStamp - a.timeStamp
+          if (reverse) {
+            return b.timeStamp - a.timeStamp
+          }
+          return a.timeStamp - b.timeStamp
         }
         if (sort === "Alphabetically") {
+          if (reverse) {
+            return b.text.localeCompare(a.text)
+          }
           return a.text.localeCompare(b.text)
         }
         return visibleTasks
