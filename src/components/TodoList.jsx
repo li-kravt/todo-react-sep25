@@ -34,7 +34,7 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
     }
 
     sortTasks(visibleTasks)
-    return visibleTasks
+    return visibleTasks.sort((a, b) => a.done - b.done)
   }
 
   const items = filterSortVisibleTasks()
