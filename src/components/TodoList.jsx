@@ -3,91 +3,37 @@ import React, { useState } from "react";
 
 export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
 
+  function sortTasks(list) {
+    list.sort((a, b) => {
+      if (sort == "Added date") {
+        reverse ? b.id - a.id : a.id - b.id
+      }
+      if (sort == "Deadline") {
+        reverse ? b.timeStamp - a.timeStamp : a.timeStamp - b.timeStamp
+      }
+      if (sort === "Alphabetically") {
+        reverse ? b.text.localeCompare(a.text) : a.text.localeCompare(b.text)
+      }
+      return
+    })
+  }
 
   function filterSortVisibleTasks() {
     let visibleTasks = []
 
     if (filter == "All") {
-      visibleTasks = [...tasks].sort((a, b) => {
-        if (sort == "Added date") {
-          if (reverse) {
-            return b.id - a.id
-          } else {
-            return a.id - b.id
-          }
-        }
-        if (sort == "Deadline") {
-          if (reverse) {
-            return b.timeStamp - a.timeStamp
-          }
-          return a.timeStamp - b.timeStamp
-        }
-        if (sort === "Alphabetically") {
-          if (reverse) {
-            return b.text.localeCompare(a.text)
-          }
-          return a.text.localeCompare(b.text)
-        }
-        return visibleTasks
-      }
-      )
+      visibleTasks = [...tasks]
     }
 
     if (filter == "Deadline") {
-      visibleTasks = [...tasks].filter((task) => {
-        return task.date
-      })
-
-      visibleTasks.sort((a, b) => {
-        if (sort == "Added date") {
-          if (reverse) {
-            return b.id - a.id
-          } else {
-            return a.id - b.id
-          }
-        }
-        if (sort == "Deadline") {
-          if (reverse) {
-            return b.timeStamp - a.timeStamp
-          }
-          return a.timeStamp - b.timeStamp
-        }
-        if (sort === "Alphabetically") {
-          if (reverse) {
-            return b.text.localeCompare(a.text)
-          }
-          return a.text.localeCompare(b.text)
-        }
-      })
+      visibleTasks = [...tasks].filter(task => task.date)
     }
 
     if (filter == "Completed") {
-      visibleTasks = [...tasks].filter((task) => {
-        return task.done
-      })
-      visibleTasks.sort((a, b) => {
-        if (sort == "Added date") {
-          if (reverse) {
-            return b.id - a.id
-          } else {
-            return a.id - b.id
-          }
-        }
-        if (sort == "Deadline") {
-          if (reverse) {
-            return b.timeStamp - a.timeStamp
-          }
-          return a.timeStamp - b.timeStamp
-        }
-        if (sort === "Alphabetically") {
-          if (reverse) {
-            return b.text.localeCompare(a.text)
-          }
-          return a.text.localeCompare(b.text)
-        }
-      })
+      visibleTasks = [...tasks].filter(task => task.done)
     }
 
+    sortTasks(visibleTasks)
     return visibleTasks
   }
 
