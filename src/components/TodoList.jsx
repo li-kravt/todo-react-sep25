@@ -6,15 +6,15 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
   function sortTasks(list) {
     list.sort((a, b) => {
       if (sort == "Added date") {
-        reverse ? b.id - a.id : a.id - b.id
+        return reverse ? b.id - a.id : a.id - b.id
       }
       if (sort == "Deadline") {
-        reverse ? b.timeStamp - a.timeStamp : a.timeStamp - b.timeStamp
+        return reverse ? b.timeStamp - a.timeStamp : a.timeStamp - b.timeStamp
       }
       if (sort === "Alphabetically") {
-        reverse ? b.text.localeCompare(a.text) : a.text.localeCompare(b.text)
+        return reverse ? b.text.localeCompare(a.text) : a.text.localeCompare(b.text)
       }
-      return
+      return 0
     })
   }
 
