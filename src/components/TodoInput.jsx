@@ -22,7 +22,7 @@ export default function TodoInput({ tasks, setTasks }) {
   }
 
   return (
-    <div className="flex flex-row h-16 w-220 p-4 items-center justify-between bg-white rounded-xl">
+    <div className="flex flex-row h-16 w-full p-4 items-center justify-between bg-white rounded-xl">
       <input className="flex w-180" type="text" value={text} onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleClick()}
         placeholder="Add new ..." />

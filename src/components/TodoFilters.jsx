@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function TodoFilters({ filter, setFilter, sort, setSort, reverse, setReverse }) {
 
   return (
-    <div className="flex justify-end px-80 gap-10 my-4">
+    <div className="flex justify-end gap-10 my-4">
       <div className="flex flex-row gap-2 items-center justify-center">
         <label className="font-light">Filter: </label>
         <select className="flex items-center justify-center bg-white p-1 rounded-md"
