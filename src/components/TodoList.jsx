@@ -54,21 +54,28 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
       <ul>
         {console.log("filterSortVisibleTasks:", filterSortVisibleTasks())}
         {items.map((task) =>
-          <li key={task.id}>
-            <input type="checkbox"
-              checked={task.done}
-              onChange={(e) => {
+          <li key={task.id}
+            className="flex items-center justify-between p-2 border-b-2 border-gray-200">
+            <div className="flex items-center justify-left gap-2">
+              <input type="checkbox"
+                checked={task.done}
+                onChange={(e) => {
 
-                const updatedTasks = tasks.map((t) => t.id === task.id ? { ...t, done: e.target.checked } : t);
-                setTasks(updatedTasks)
+                  const updatedTasks = tasks.map((t) => t.id === task.id ? { ...t, done: e.target.checked } : t);
+                  setTasks(updatedTasks)
 
-                console.log("click")
-              }}>
-            </input>
-            <label style={task.done === true ? { textDecoration: "line-through" } : {}}>{task.text}</label>
-            <div><p>{task.date}</p></div>
-            <button className=" text-red-700 cursor-pointer"
-              onClick={() => deleteTask(task.id)}>Delete</button></li>)}
+                  console.log("click")
+                }}>
+              </input>
+              <label style={task.done === true ? { textDecoration: "line-through" } : {}}>{task.text}</label>
+            </div>
+            <div className="flex justify-end items-center gap-4">
+              <div className="flex items-center"><p>{task.date}</p></div>
+              <button className=" flex items-center text-red-700 cursor-pointer"
+                onClick={() => deleteTask(task.id)}>Delete</button>
+            </div>
+          </li>)}
+
       </ul>
     </div>
   )
