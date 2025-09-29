@@ -40,6 +40,12 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
 
   const items = filterSortVisibleTasks()
 
+  function deleteTask(key) {
+    console.log(key)
+    setTasks(tasks.filter(task => task.id !== key))
+    console.log("tasks", tasks)
+  }
+
   return (
     <div>
       <ul>
@@ -57,7 +63,9 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
               }}>
             </input>
             <label style={task.done === true ? { textDecoration: "line-through" } : {}}>{task.text}</label>
-            <div><p>{task.date}</p></div></li>)}
+            <div><p>{task.date}</p></div>
+            <button className=" text-red-700 cursor-pointer"
+              onClick={(e) => deleteTask(task.id, e)}>Delete</button></li>)}
       </ul>
     </div>
   )
