@@ -6,7 +6,7 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
         return reverse ? a.id - b.id : b.id - a.id
       }
       if (sort == "Deadline") {
-        return reverse ? b.timeStamp - a.timeStamp : a.timeStamp - b.timeStamp
+        return reverse ? a.timeStamp - b.timeStamp : b.timeStamp - a.timeStamp
       }
       if (sort === "Alphabetically") {
         return reverse ? b.text.localeCompare(a.text) : a.text.localeCompare(b.text)

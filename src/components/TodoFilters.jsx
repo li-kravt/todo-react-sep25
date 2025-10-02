@@ -27,7 +27,7 @@ export default function TodoFilters({ filter, setFilter, sort, setSort, reverse,
         alt="reverse"
         className={reverse ? "rotate-180 cursor-pointer" : "cursor-pointer"} />
       <button className="flex items-center p-2 bg-red-700 text-white rounded-sm cursor-pointer"
-        onClick={() => setTasks([])}>Clear all</button>
+        onClick={() => confirm("Delete all tasks?") && setTasks([])}>Clear all</button>
     </div>
   )
 }
