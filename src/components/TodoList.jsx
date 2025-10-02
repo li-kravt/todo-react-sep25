@@ -47,6 +47,7 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
     const updatedTasks = [...tasks];
     removedTasks.push(updatedTasks.splice(index, 1))
     setTasks(updatedTasks);
+    localStorage.setItem("todos", JSON.stringify(tasks))
   }
 
   return (

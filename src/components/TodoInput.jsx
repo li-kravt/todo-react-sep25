@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function TodoInput({ tasks, setTasks }) {
   const [text, setText] = useState("")
@@ -11,10 +11,16 @@ export default function TodoInput({ tasks, setTasks }) {
     }
     setTasks([...tasks, { id: Date.now(), text: text, date: date, timeStamp: timeStamp, done: false }])
     setText("")
-    console.log(tasks)
     setDate("")
     setTimeStamp(0)
+
+
+    console.log(localStorage)
   }
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(tasks));
+    console.log("UseEffectWorks")
+  }, [tasks])
 
   function handleChange(e) {
     setDate(e.target.value)
