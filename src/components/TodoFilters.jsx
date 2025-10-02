@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-export default function TodoFilters({ filter, setFilter, sort, setSort, reverse, setReverse }) {
+export default function TodoFilters({ filter, setFilter, sort, setSort, reverse, setReverse, setTasks }) {
 
   return (
     <div className="flex justify-end gap-10 my-4">
@@ -28,6 +26,8 @@ export default function TodoFilters({ filter, setFilter, sort, setSort, reverse,
         src="/img/sort.svg"
         alt="reverse"
         className={reverse ? "rotate-180 cursor-pointer" : "cursor-pointer"} />
+      <button className="flex items-center p-2 bg-red-700 text-white rounded-sm cursor-pointer"
+        onClick={() => setTasks([])}>Clear all</button>
     </div>
   )
 }
