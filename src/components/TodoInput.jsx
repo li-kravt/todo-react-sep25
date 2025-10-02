@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function TodoInput({ tasks, setTasks }) {
   const [text, setText] = useState("")
   const [date, setDate] = useState("")
-  const [timeStamp, setTimeStamp] = useState(0)
+  const [timeStampForSort, setTimeStampForSort] = useState(0)
 
   function handleClick() {
     if (text === "") {
       return
     }
-    setTasks([...tasks, { id: Date.now(), text: text, date: date, timeStamp: timeStamp, done: false }])
+    setTasks([...tasks, { id: Date.now(), text: text, date: date, timeStamp: timeStampForSort, done: false }])
     setText("")
     setDate("")
-    setTimeStamp(0)
-
-
-    console.log(localStorage)
+    setTimeStampForSort(0)
   }
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(tasks));
-    console.log("UseEffectWorks")
   }, [tasks])
 
   function handleChange(e) {
     setDate(e.target.value)
-    setTimeStamp(e.target.valueAsNumber)
+    setTimeStampForSort(e.target.valueAsNumber)
   }
 
   return (
     <div className="flex flex-row h-16 w-full p-4 items-center justify-between bg-white rounded-xl">
-      <input className="flex w-180" type="text" value={text} onChange={(e) => setText(e.target.value)}
+      <input className="flex w-180"
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleClick()}
         placeholder="Add new ..." />
       <div className="flex justify-center items-center gap-4">
-        <input type="date" className="w-h h-6 cursor-pointer"
+        <input type="date"
+          className="w-h h-6 cursor-pointer"
           src="img/calendar.svg"
           alt="choose date"
           value={date}

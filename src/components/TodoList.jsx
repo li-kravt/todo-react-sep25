@@ -1,13 +1,9 @@
-import React, { useState } from "react";
-
-
-
 export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
 
   function sortTasks(list) {
     list.sort((a, b) => {
       if (sort == "Added date") {
-        return reverse ? b.id - a.id : a.id - b.id
+        return reverse ? a.id - b.id : b.id - a.id
       }
       if (sort == "Deadline") {
         return reverse ? b.timeStamp - a.timeStamp : a.timeStamp - b.timeStamp
@@ -53,7 +49,6 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
   return (
     <div>
       <ul>
-        {console.log("filterSortVisibleTasks:", filterSortVisibleTasks())}
         {items.map((task) =>
           <li key={task.id}
             className="flex items-center justify-between p-2 border-b-2 border-gray-200">
@@ -61,11 +56,8 @@ export default function TodoList({ tasks, setTasks, filter, sort, reverse }) {
               <input type="checkbox"
                 checked={task.done}
                 onChange={(e) => {
-
                   const updatedTasks = tasks.map((t) => t.id === task.id ? { ...t, done: e.target.checked } : t);
                   setTasks(updatedTasks)
-
-                  console.log("click")
                 }}>
               </input>
               <label style={task.done === true ? { textDecoration: "line-through" } : {}}>{task.text}</label>

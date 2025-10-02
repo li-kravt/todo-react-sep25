@@ -1,11 +1,9 @@
 import { useState } from "react"
-import Footer from "./components/Footer"
 import TodoFilters from "./components/TodoFilters"
 import TodoInput from "./components/TodoInput"
 import TodoList from "./components/TodoList"
 
 function App() {
-  console.log("1 -", localStorage.getItem("todos"))
   const [tasks, setTasks] = useState(localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [])
   const [filter, setFilter] = useState("All")
   const [sort, setSort] = useState("Added date")
@@ -18,8 +16,7 @@ function App() {
         <TodoInput tasks={tasks} setTasks={setTasks} />
       </div>
       <TodoFilters filter={filter} setFilter={setFilter} sort={sort} setSort={setSort} reverse={reverse} setReverse={setReverse} />
-      <TodoList tasks={tasks} setTasks={setTasks} filter={filter} sort={sort} setSort={setSort} reverse={reverse} />
-      <Footer />
+      <TodoList tasks={tasks} setTasks={setTasks} filter={filter} sort={sort} reverse={reverse} />
     </div>
   )
 }

@@ -24,8 +24,10 @@ export default function TodoFilters({ filter, setFilter, sort, setSort, reverse,
           <option>Alphabetically</option>
         </select>
       </div>
-      <img onClick={() => setReverse(prev => !prev)} src="/img/sort.svg" alt="reverse" className={reverse ? "rotate-180 cursor-pointer" : "cursor-pointer"} />
-      {console.log(reverse)}
+      <img onClick={() => setReverse(prev => !prev)}
+        src="/img/sort.svg"
+        alt="reverse"
+        className={reverse ? "rotate-180 cursor-pointer" : "cursor-pointer"} />
     </div>
   )
 }
